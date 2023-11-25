@@ -47,4 +47,8 @@ public enum Menu {
     public int calculateAmountBy(MenuCount menuCount) {
         return Math.multiplyExact(price, menuCount.getCount());
     }
+
+    public boolean equalsBy(MenuCategory menuCategory) {
+        return category.equals(menuCategory);
+    }
 }

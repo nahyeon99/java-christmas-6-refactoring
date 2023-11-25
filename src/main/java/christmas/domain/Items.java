@@ -3,6 +3,7 @@ package christmas.domain;
 import static christmas.exception.ExceptionMessage.INVALID_ORDER;
 
 import christmas.domain.order.Menu;
+import christmas.domain.order.MenuCategory;
 import christmas.domain.order.MenuCount;
 import christmas.dto.ItemDto;
 import java.util.EnumMap;
@@ -41,6 +42,12 @@ public class Items {
                 .sum();
 
         return Money.wons(sum);
+    }
+
+    public int getCountByMenuCategory(MenuCategory menuCategory) {
+        return (int) items.keySet().parallelStream()
+                .filter(menu -> menu.equalsBy(menuCategory))
+                .count();
     }
 
     private static void validateOrderCount(int count) {
