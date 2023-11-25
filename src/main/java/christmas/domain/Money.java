@@ -37,6 +37,10 @@ public class Money {
         return amount.multiply(MINUS_ONE.amount);
     }
 
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) {
