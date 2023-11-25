@@ -43,4 +43,8 @@ public enum Menu {
     public String getKorean() {
         return korean;
     }
+
+    public int calculateAmountBy(MenuCount menuCount) {
+        return Math.multiplyExact(price, menuCount.getCount());
+    }
 }

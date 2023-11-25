@@ -35,6 +35,14 @@ public class Items {
         return new Items(items);
     }
 
+    public Money getTotalAmountNotDiscounted() {
+        int sum = items.keySet().parallelStream()
+                .mapToInt(menu -> menu.calculateAmountBy(items.get(menu)))
+                .sum();
+
+        return Money.wons(sum);
+    }
+
     private static void validateOrderCount(int count) {
         if (count > 20) {
             throw new IllegalStateException(INVALID_ORDER.getMessage());
