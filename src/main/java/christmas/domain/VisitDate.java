@@ -29,4 +29,12 @@ public class VisitDate {
     public LocalDate getDate() {
         return date;
     }
+
+    public int getMonth() {
+        return date.getMonth().getValue();
+    }
+
+    public int getDay() {
+        return date.getDayOfMonth();
+    }
 }
