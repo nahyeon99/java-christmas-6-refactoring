@@ -1,9 +1,10 @@
 package christmas.view;
 
+import christmas.dto.ItemDto;
 import java.util.List;
 
 public interface InputView {
     int inputVisitDate();
 
-    List<String> inputMenuAndCount();
+    List<ItemDto> inputMenuAndCount();
 }
