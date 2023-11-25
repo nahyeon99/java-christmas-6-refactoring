@@ -1,10 +1,13 @@
 package christmas.controller;
 
 import christmas.domain.Event;
+import christmas.domain.Items;
 import christmas.domain.VisitDate;
+import christmas.dto.ItemDto;
 import christmas.view.InputView;
 import christmas.view.MessageView;
 import christmas.view.ResultView;
+import java.util.List;
 
 public class EventController {
     private final Event event;
@@ -25,6 +28,7 @@ public class EventController {
     public void run() {
         welcome();
         VisitDate visitDate = askVisitDate();
+        Items orderItems = askOrder();
     }
 
     private void welcome() {
@@ -35,5 +39,12 @@ public class EventController {
         messageView.printVisitDateRequest();
 
         return VisitDate.of(event, inputView.inputVisitDate());
+    }
+
+    private Items askOrder() {
+        messageView.printOrderRequest();
+        List<ItemDto> itemDtos = inputView.inputMenuAndCount();
+
+        return Items.orderOf(itemDtos);
     }
 }

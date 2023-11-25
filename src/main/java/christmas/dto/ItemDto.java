@@ -26,6 +26,14 @@ public class ItemDto {
                 .toList();
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public MenuCount getMenuCount() {
+        return menuCount;
+    }
+
     private static ItemDto of(String menu, String count) {
         MenuCount orderCount = MenuCount.orderFrom(InputUtil.readNumber(count.trim()));
         return new ItemDto(Menu.from(menu.trim()), orderCount);
