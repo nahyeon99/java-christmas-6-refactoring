@@ -7,6 +7,7 @@ import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefits;
 import christmas.dto.BenefitDto;
 import christmas.dto.ItemDto;
+import christmas.dto.MoneyDto;
 import java.util.List;
 
 public class Order {
@@ -46,5 +47,9 @@ public class Order {
 
     public List<BenefitDto> getBenefits() {
         return benefits.getBenefits();
+    }
+
+    public MoneyDto getBenefitsAmount() {
+        return MoneyDto.minusFrom(benefits.getTotalAmount());
     }
 }
