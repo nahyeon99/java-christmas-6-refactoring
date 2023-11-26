@@ -9,7 +9,7 @@ public class ConsoleInputView implements InputView {
 
     @Override
     public int inputVisitDate() {
-        return InputUtil.readNumber();
+        return InputUtil.readNumber(InputUtil.readLine());
     }
 
     @Override

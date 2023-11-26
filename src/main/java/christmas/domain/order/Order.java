@@ -59,4 +59,8 @@ public class Order {
     private Money getDiscountAmount() {
         return benefits.getDiscountsAmount();
     }
+
+    public Badge getBadge() {
+        return badge;
+    }
 }

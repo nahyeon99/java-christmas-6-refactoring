@@ -30,32 +30,32 @@ public class ConsoleMessageView implements MessageView {
 
     @Override
     public void printOrderMenuResultTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_ORDER_MENU_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_ORDER_MENU_TITLE.message));
     }
 
     @Override
     public void printTotalAmountNotDiscountedResultTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_TOTAL_AMOUNT_NOT_DISCOUNTED_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_TOTAL_AMOUNT_NOT_DISCOUNTED_TITLE.message));
     }
 
     @Override
     public void printGiftResultTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_GIFT_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_GIFT_TITLE.message));
     }
 
     @Override
     public void printBenefitsTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_BENEFITS_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_BENEFITS_TITLE.message));
     }
 
     @Override
     public void printBenefitsAmountTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_BENEFITS_AMOUNT_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_BENEFITS_AMOUNT_TITLE.message));
     }
 
     @Override
     public void printTotalAmountDiscountedTitle() {
-        System.out.println(formatResultTitle(OutputMessage.RESULT_TOTAL_AMOUNT_DISCOUNTED_TITLE.message));
+        System.out.println(resultTitleFormat(OutputMessage.RESULT_TOTAL_AMOUNT_DISCOUNTED_TITLE.message));
     }
 
     @Override

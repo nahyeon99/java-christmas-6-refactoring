@@ -1,14 +1,17 @@
 package christmas.controller;
 
+import christmas.domain.Badge;
 import christmas.domain.Event;
 import christmas.domain.Items;
 import christmas.domain.Money;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
+import christmas.dto.BadgeDto;
 import christmas.dto.BenefitDto;
 import christmas.dto.EventDto;
 import christmas.dto.ItemDto;
 import christmas.dto.MoneyDto;
+import christmas.dto.MonthDto;
 import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.MessageView;
@@ -40,7 +43,7 @@ public class EventController {
         VisitDate visitDate = askVisitDate();
         Order order = generateOrder(visitDate);
 
-        printPreviewTitle(new EventDto(event.getMonth(), visitDate.getDay(), event.getHost()));
+        printPreviewTitle(EventDto.of(event, visitDate));
         printOrderResult(order);
     }
 
@@ -76,6 +79,7 @@ public class EventController {
         printBenefits(order.getBenefits());
         printTotalBenefitAmount(order.getBenefitsAmount());
         printTotalAmountDiscounted(order.getTotalAmountDiscounted());
+        printEventBadge(order.getBadge());
     }
 
     private void printOrderMenu(List<ItemDto> orderItems) {
@@ -106,5 +110,10 @@ public class EventController {
     private void printTotalAmountDiscounted(Money amount) {
         messageView.printTotalAmountDiscountedTitle();
         resultView.printAmount(MoneyDto.from(amount));
+    }
+
+    private void printEventBadge(Badge badge) {
+        messageView.printEventBadgeTitle(MonthDto.from(event));
+        resultView.printBadge(BadgeDto.from(badge));
     }
 }

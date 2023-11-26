@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.dto.BadgeDto;
 import christmas.dto.BenefitDto;
 import christmas.dto.ItemDto;
 import christmas.dto.MoneyDto;
@@ -11,4 +12,6 @@ public interface ResultView {
     void printAmount(MoneyDto amount);
 
     void printBenefits(List<BenefitDto> benefits);
+
+    void printBadge(BadgeDto badge);
 }

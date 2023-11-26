@@ -1,5 +1,6 @@
 package christmas.view;
 
+import christmas.dto.BadgeDto;
 import christmas.dto.BenefitDto;
 import christmas.dto.ItemDto;
 import christmas.dto.MoneyDto;
@@ -21,6 +22,11 @@ public class ConsoleResultView implements ResultView {
     @Override
     public void printBenefits(List<BenefitDto> benefits) {
         benefits.forEach(this::printBenefit);
+    }
+
+    @Override
+    public void printBadge(BadgeDto badge) {
+        System.out.println(badge.badge());
     }
 
     private void printItem(ItemDto item) {
