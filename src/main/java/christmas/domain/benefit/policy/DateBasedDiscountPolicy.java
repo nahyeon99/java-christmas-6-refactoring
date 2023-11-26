@@ -22,24 +22,24 @@ public class DateBasedDiscountPolicy implements DiscountPolicy {
     @Override
     public Benefit calculateBenefit(VisitDate visitDate, Items orderItem) {
         Money discountAmount = calculateIncreaseAmount(visitDate)
-                .plus(DateBasedDiscountPolicy.discountAmount.BASE.money);
+                .plus(DateBasedDiscountPolicy.DiscountAmount.BASE.money);
 
         return Benefit.of(benefitType, DiscountItem.from(discountAmount));
     }
 
     private Money calculateIncreaseAmount(VisitDate visitDate) {
         int period = (int) DAYS.between(visitDate.getDate(), startDate);
-        Money increaseAmount = discountAmount.DAILY_INCREASE.money;
+        Money increaseAmount = DiscountAmount.DAILY_INCREASE.money;
         return increaseAmount.multiply(period);
     }
 
-    private enum discountAmount {
+    private enum DiscountAmount {
         BASE(1_000),
         DAILY_INCREASE(100);
 
         private final Money money;
 
-        discountAmount(int amount) {
+        DiscountAmount(int amount) {
             this.money = Money.wons(amount);
         }
     }

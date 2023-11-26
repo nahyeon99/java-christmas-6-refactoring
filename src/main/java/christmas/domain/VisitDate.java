@@ -30,10 +30,6 @@ public class VisitDate {
         return date;
     }
 
-    public int getMonth() {
-        return date.getMonth().getValue();
-    }
-
     public int getDay() {
         return date.getDayOfMonth();
     }

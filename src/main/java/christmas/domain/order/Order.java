@@ -56,11 +56,11 @@ public class Order {
         return benefits.getBenefits();
     }
 
-    private Money getDiscountAmount() {
-        return benefits.getDiscountsAmount();
-    }
-
     public Badge getBadge() {
         return badge;
+    }
+
+    private Money getDiscountAmount() {
+        return benefits.getDiscountsAmount();
     }
 }
