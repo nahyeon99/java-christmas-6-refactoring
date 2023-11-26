@@ -61,10 +61,10 @@ public class ConsoleMessageView implements MessageView {
     @Override
     public void printEventBadgeTitle(MonthDto monthDto) {
         String title = String.format(OutputMessage.RESULT_MONTHLY_EVENT_BADGE_FORMAT.message, monthDto.month());
-        System.out.println(formatResultTitle(title));
+        System.out.println(resultTitleFormat(title));
     }
 
-    private String formatResultTitle(String title) {
+    private String resultTitleFormat(String title) {
         return String.format(OutputMessage.RESULT_TITLE_FORMAT.message, title);
     }
 

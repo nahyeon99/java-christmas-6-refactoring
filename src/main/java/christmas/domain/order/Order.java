@@ -2,6 +2,7 @@ package christmas.domain.order;
 
 import christmas.domain.Badge;
 import christmas.domain.Items;
+import christmas.domain.Money;
 import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefits;
 import christmas.dto.ItemDto;
@@ -32,5 +33,9 @@ public class Order {
 
     public List<ItemDto> getOrderItems() {
         return orderItems.getItems();
+    }
+
+    public Money getTotalAmountNotDiscounted() {
+        return orderItems.getTotalAmountNotDiscounted();
     }
 }

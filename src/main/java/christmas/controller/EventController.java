@@ -6,6 +6,7 @@ import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
 import christmas.dto.EventDto;
 import christmas.dto.ItemDto;
+import christmas.dto.MoneyDto;
 import christmas.service.OrderService;
 import christmas.view.InputView;
 import christmas.view.MessageView;
@@ -68,10 +69,16 @@ public class EventController {
 
     private void printOrderResult(Order order) {
         printOrderMenu(order);
+        printTotalAmountNotDiscounted(order);
     }
 
     private void printOrderMenu(Order order) {
         messageView.printOrderMenuResultTitle();
         resultView.printItems(order.getOrderItems());
+    }
+
+    private void printTotalAmountNotDiscounted(Order order) {
+        messageView.printTotalAmountNotDiscountedResultTitle();
+        resultView.printAmount(MoneyDto.of(order.getTotalAmountNotDiscounted()));
     }
 }
