@@ -70,6 +70,7 @@ public class EventController {
     private void printOrderResult(Order order) {
         printOrderMenu(order);
         printTotalAmountNotDiscounted(order);
+        printGiftMenu(order);
     }
 
     private void printOrderMenu(Order order) {
@@ -80,5 +81,10 @@ public class EventController {
     private void printTotalAmountNotDiscounted(Order order) {
         messageView.printTotalAmountNotDiscountedResultTitle();
         resultView.printAmount(MoneyDto.of(order.getTotalAmountNotDiscounted()));
+    }
+
+    private void printGiftMenu(Order order) {
+        messageView.printGiftResultTitle();
+        resultView.printItems(order.getGiftItems());
     }
 }

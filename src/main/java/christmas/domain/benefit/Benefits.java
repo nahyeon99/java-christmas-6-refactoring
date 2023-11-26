@@ -1,7 +1,7 @@
 package christmas.domain.benefit;
 
 import christmas.domain.Money;
-import christmas.domain.NoneItem;
+import christmas.dto.ItemDto;
 import java.util.List;
 
 public class Benefits {
@@ -28,6 +28,13 @@ public class Benefits {
                 .sum();
 
         return Money.wons(sum);
+    }
+
+    public List<ItemDto> getGiftItems() {
+        return benefits.parallelStream()
+                .filter(Benefit::isGift)
+                .flatMap(benefit -> benefit.getGiftItems().stream())
+                .toList();
     }
 
     public static Benefits getNone() {

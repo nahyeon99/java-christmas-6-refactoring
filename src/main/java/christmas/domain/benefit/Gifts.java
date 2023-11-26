@@ -1,6 +1,7 @@
 package christmas.domain.benefit;
 
 import christmas.domain.Money;
+import christmas.dto.ItemDto;
 import java.util.List;
 
 public class Gifts {
@@ -21,5 +22,11 @@ public class Gifts {
                 .sum();
 
         return Money.wons(sum);
+    }
+
+    public List<ItemDto> getItems() {
+        return gifts.parallelStream()
+                .flatMap(gift -> gift.getItems().stream())
+                .toList();
     }
 }

@@ -35,6 +35,10 @@ public class Order {
         return orderItems.getItems();
     }
 
+    public List<ItemDto> getGiftItems() {
+        return benefits.getGiftItems();
+    }
+
     public Money getTotalAmountNotDiscounted() {
         return orderItems.getTotalAmountNotDiscounted();
     }

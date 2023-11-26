@@ -1,6 +1,9 @@
 package christmas.domain.benefit;
 
 import christmas.domain.Money;
+import christmas.dto.ItemDto;
+import java.util.Collections;
+import java.util.List;
 
 public class DiscountItem implements BenefitItem {
     private final Money discountAmount;
@@ -13,12 +16,13 @@ public class DiscountItem implements BenefitItem {
         return new DiscountItem(discountAmount);
     }
 
-    public Money getDiscountAmount() {
+    @Override
+    public Money getAmount() {
         return discountAmount;
     }
 
     @Override
-    public Money getAmount() {
-        return discountAmount;
+    public List<ItemDto> getItems() {
+        return Collections.emptyList();
     }
 }

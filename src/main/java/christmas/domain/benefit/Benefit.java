@@ -1,6 +1,8 @@
 package christmas.domain.benefit;
 
 import christmas.domain.Money;
+import christmas.dto.ItemDto;
+import java.util.List;
 
 public class Benefit {
     private final BenefitType benefitType;
@@ -17,5 +19,13 @@ public class Benefit {
 
     public Money getAmount() {
         return benefitItem.getAmount();
+    }
+
+    public boolean isGift() {
+        return benefitType.equals(BenefitType.GIFT);
+    }
+
+    public List<ItemDto> getGiftItems() {
+        return benefitItem.getItems();
     }
 }
