@@ -4,6 +4,7 @@ import christmas.domain.Event;
 import christmas.domain.Items;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
+import christmas.dto.EventDto;
 import christmas.dto.ItemDto;
 import christmas.service.OrderService;
 import christmas.view.InputView;
@@ -32,8 +33,12 @@ public class EventController {
 
     public void run() {
         welcome();
+
         VisitDate visitDate = askVisitDate();
         Order order = generateOrder(visitDate);
+
+        printPreviewTitle(new EventDto(event.getMonth(), visitDate.getDay(), event.getHost()));
+        printOrderResult(order);
     }
 
     private void welcome() {
@@ -55,5 +60,18 @@ public class EventController {
         List<ItemDto> itemDtos = inputView.inputMenuAndCount();
 
         return Items.orderOf(itemDtos);
+    }
+
+    private void printPreviewTitle(EventDto eventDto) {
+        messageView.printPreviewTitle(eventDto);
+    }
+
+    private void printOrderResult(Order order) {
+        printOrderMenu(order);
+    }
+
+    private void printOrderMenu(Order order) {
+        messageView.printOrderMenuResultTitle();
+        resultView.printItems(order.getOrderItems());
     }
 }

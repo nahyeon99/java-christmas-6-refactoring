@@ -50,6 +50,10 @@ public class Items {
                 .count();
     }
 
+    public List<ItemDto> getItems() {
+        return ItemDto.from(items);
+    }
+
     private static void validateOrderCount(int count) {
         if (count > 20) {
             throw new IllegalStateException(INVALID_ORDER.getMessage());

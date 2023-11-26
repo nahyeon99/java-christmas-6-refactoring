@@ -4,6 +4,8 @@ import christmas.domain.Badge;
 import christmas.domain.Items;
 import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefits;
+import christmas.dto.ItemDto;
+import java.util.List;
 
 public class Order {
     private final VisitDate visitDate;
@@ -26,5 +28,9 @@ public class Order {
                            Benefits benefits,
                            Badge badge) {
         return new Order(visitDate, orderItems, benefits, badge);
+    }
+
+    public List<ItemDto> getOrderItems() {
+        return orderItems.getItems();
     }
 }
