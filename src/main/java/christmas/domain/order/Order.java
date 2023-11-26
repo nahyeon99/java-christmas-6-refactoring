@@ -5,6 +5,7 @@ import christmas.domain.Items;
 import christmas.domain.Money;
 import christmas.domain.VisitDate;
 import christmas.domain.benefit.Benefits;
+import christmas.dto.BenefitDto;
 import christmas.dto.ItemDto;
 import java.util.List;
 
@@ -31,6 +32,10 @@ public class Order {
         return new Order(visitDate, orderItems, benefits, badge);
     }
 
+    public Money getTotalAmountNotDiscounted() {
+        return orderItems.getTotalAmountNotDiscounted();
+    }
+
     public List<ItemDto> getOrderItems() {
         return orderItems.getItems();
     }
@@ -39,7 +44,7 @@ public class Order {
         return benefits.getGiftItems();
     }
 
-    public Money getTotalAmountNotDiscounted() {
-        return orderItems.getTotalAmountNotDiscounted();
+    public List<BenefitDto> getBenefits() {
+        return benefits.getBenefits();
     }
 }

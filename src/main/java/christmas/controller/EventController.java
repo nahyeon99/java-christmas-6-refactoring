@@ -2,8 +2,10 @@ package christmas.controller;
 
 import christmas.domain.Event;
 import christmas.domain.Items;
+import christmas.domain.Money;
 import christmas.domain.VisitDate;
 import christmas.domain.order.Order;
+import christmas.dto.BenefitDto;
 import christmas.dto.EventDto;
 import christmas.dto.ItemDto;
 import christmas.dto.MoneyDto;
@@ -68,23 +70,29 @@ public class EventController {
     }
 
     private void printOrderResult(Order order) {
-        printOrderMenu(order);
-        printTotalAmountNotDiscounted(order);
-        printGiftMenu(order);
+        printOrderMenu(order.getOrderItems());
+        printTotalAmountNotDiscounted(order.getTotalAmountNotDiscounted());
+        printGiftMenu(order.getGiftItems());
+        printBenefits(order.getBenefits());
     }
 
-    private void printOrderMenu(Order order) {
+    private void printOrderMenu(List<ItemDto> orderItems) {
         messageView.printOrderMenuResultTitle();
-        resultView.printItems(order.getOrderItems());
+        resultView.printItems(orderItems);
     }
 
-    private void printTotalAmountNotDiscounted(Order order) {
+    private void printTotalAmountNotDiscounted(Money totalAmountNotDiscounted) {
         messageView.printTotalAmountNotDiscountedResultTitle();
-        resultView.printAmount(MoneyDto.of(order.getTotalAmountNotDiscounted()));
+        resultView.printAmount(MoneyDto.from(totalAmountNotDiscounted));
     }
 
-    private void printGiftMenu(Order order) {
+    private void printGiftMenu(List<ItemDto> giftItems) {
         messageView.printGiftResultTitle();
-        resultView.printItems(order.getGiftItems());
+        resultView.printItems(giftItems);
+    }
+
+    private void printBenefits(List<BenefitDto> benefits) {
+        messageView.printBenefitsTitle();
+        resultView.printBenefits(benefits);
     }
 }

@@ -8,11 +8,11 @@ public record MoneyDto(BigDecimal amount) {
         this(money.getAmount());
     }
 
-    public static MoneyDto of(Money money) {
+    public static MoneyDto from(Money money) {
         return new MoneyDto(money);
     }
 
-    public static MoneyDto minusOf(Money money) {
+    public static MoneyDto minusFrom(Money money) {
         return new MoneyDto(money.convertMinus());
     }
 }

@@ -1,6 +1,7 @@
 package christmas.domain.benefit;
 
 import christmas.domain.Money;
+import christmas.dto.BenefitDto;
 import christmas.dto.ItemDto;
 import java.util.List;
 
@@ -34,6 +35,12 @@ public class Benefits {
         return benefits.parallelStream()
                 .filter(Benefit::isGift)
                 .flatMap(benefit -> benefit.getGiftItems().stream())
+                .toList();
+    }
+
+    public List<BenefitDto> getBenefits() {
+        return benefits.parallelStream()
+                .map(Benefit::getBenefit)
                 .toList();
     }
 
