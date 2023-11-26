@@ -31,6 +31,16 @@ public class Benefits {
         return Money.wons(sum);
     }
 
+    public Money getDiscountsAmount() {
+        int sum = benefits.parallelStream()
+                .filter(benefit -> !benefit.isGift())
+                .map(benefit -> benefit.getAmount())
+                .mapToInt(money -> money.getAmount().intValue())
+                .sum();
+
+        return Money.wons(sum);
+    }
+
     public List<ItemDto> getGiftItems() {
         return benefits.parallelStream()
                 .filter(Benefit::isGift)

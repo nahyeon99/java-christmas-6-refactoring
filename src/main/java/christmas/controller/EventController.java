@@ -75,6 +75,7 @@ public class EventController {
         printGiftMenu(order.getGiftItems());
         printBenefits(order.getBenefits());
         printTotalBenefitAmount(order.getBenefitsAmount());
+        printTotalAmountDiscounted(order.getTotalAmountDiscounted());
     }
 
     private void printOrderMenu(List<ItemDto> orderItems) {
@@ -97,8 +98,13 @@ public class EventController {
         resultView.printBenefits(benefits);
     }
 
-    private void printTotalBenefitAmount(MoneyDto amount) {
+    private void printTotalBenefitAmount(Money amount) {
         messageView.printBenefitsAmountTitle();
-        resultView.printAmount(amount);
+        resultView.printAmount(MoneyDto.minusFrom(amount));
+    }
+
+    private void printTotalAmountDiscounted(Money amount) {
+        messageView.printTotalAmountDiscountedTitle();
+        resultView.printAmount(MoneyDto.from(amount));
     }
 }
