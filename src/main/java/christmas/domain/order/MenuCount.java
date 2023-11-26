@@ -14,6 +14,10 @@ public class MenuCount {
         return new MenuCount(count);
     }
 
+    public static MenuCount giftFrom(int count) {
+        return new MenuCount(count);
+    }
+
     public int getCount() {
         return count;
     }

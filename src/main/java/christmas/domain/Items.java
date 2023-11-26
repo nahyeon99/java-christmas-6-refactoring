@@ -36,6 +36,13 @@ public class Items {
         return new Items(items);
     }
 
+    public static Items giftOf(ItemDto orderCountDto) {
+        Map<Menu, MenuCount> giftItems = new EnumMap<>(Menu.class);
+        giftItems.put(orderCountDto.getMenu(), orderCountDto.getMenuCount());
+
+        return new Items(giftItems);
+    }
+
     public Money getTotalAmountNotDiscounted() {
         int sum = items.keySet().parallelStream()
                 .mapToInt(menu -> menu.calculateAmountBy(items.get(menu)))

@@ -29,8 +29,12 @@ public class ItemDto {
 
     public static List<ItemDto> from(Map<Menu, MenuCount> items) {
         return items.keySet().parallelStream()
-                .map(menu -> new ItemDto(menu, items.get(menu)))
+                .map(menu -> of(menu, items.get(menu)))
                 .toList();
+    }
+
+    public static ItemDto of(Menu menu, MenuCount count) {
+        return new ItemDto(menu, count);
     }
 
     private static ItemDto of(String menu, String count) {
