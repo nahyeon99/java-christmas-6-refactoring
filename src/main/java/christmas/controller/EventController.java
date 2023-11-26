@@ -1,5 +1,8 @@
 package christmas.controller;
 
+import static christmas.exception.ExceptionMessage.INVALID_ORDER;
+import static christmas.exception.ExceptionMessage.INVALID_VISIT_DATE;
+
 import christmas.domain.Badge;
 import christmas.domain.Event;
 import christmas.domain.Items;
@@ -13,6 +16,7 @@ import christmas.dto.ItemDto;
 import christmas.dto.MoneyDto;
 import christmas.dto.MonthDto;
 import christmas.service.OrderService;
+import christmas.util.InputUtil;
 import christmas.view.InputView;
 import christmas.view.MessageView;
 import christmas.view.ResultView;
@@ -40,8 +44,8 @@ public class EventController {
     public void run() {
         welcome();
 
-        VisitDate visitDate = askVisitDate();
-        Order order = generateOrder(visitDate);
+        VisitDate visitDate = InputUtil.repeatUntilValidInput(INVALID_VISIT_DATE.getMessage(), () -> askVisitDate());
+        Order order = InputUtil.repeatUntilValidInput(INVALID_ORDER.getMessage(), () -> generateOrder(visitDate));
 
         printPreviewTitle(EventDto.of(event, visitDate));
         printOrderResult(order);
